@@ -1,0 +1,9 @@
+{
+  "name": "mixin-pattern",
+  "version": "1.0.0",
+  "description": "Mixin Design Pattern",
+  "main": "main.js",
+  "author": "Amaan Kulshreshtha",
+  "license": "MIT",
+  "private": false
+}
