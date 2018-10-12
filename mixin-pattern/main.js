@@ -1,34 +1,47 @@
 const boxContainer = document.getElementById("box-container");
-const boxItem = document.getElementsByClassName("box-item");
-
-const node = document.createElement("SPAN");
-node.classList.add("box-item");
+const boxItems = document.getElementsByClassName("box-item");
+const addBtn = document.getElementById("add");
+const removeBtn = document.getElementById("remove");
 
 function Box(element) {
   this.__el = element;
-  for (const box of boxItem) {
-    box.classList.add("activated");
-  }
   this.activated = true;
 }
 
-Box.prototype.add = function() {
-  boxContainer.appendChild(this.__el);
+Box.prototype.init = function() {
+  this.activateBox();
+  this.__el.addEventListener("click", this.toggleActivation.bind(this));
+  addBtn.addEventListener("click", this.logger.bind(this));
 };
 
-Box.prototype.remove = function() {
-  boxContainer.removeChild(this.__el);
+Box.prototype.logger = function() {
+  console.log(this);
 };
 
-Box.prototype.toggleActivation = function() {
-  this.activated = !this.activated;
-  if (!this.activated) {
-    this.__el.classList.add("deactivated");
-  } else {
+Box.prototype.addBox = function() {
+  const node;
+}
+
+Box.prototype.activateBox = function() {
+  if (this.activated) {
     this.__el.classList.add("activated");
   }
 };
 
-for (let i = 0; i < boxItem.length; i++) {
-  boxItem[i].addEventListener("click", toggleActivation);
+Box.prototype.deactivateBox = function() {
+  if (!this.activated) {
+    this.__el.classList.remove("activated");
+  }
+};
+
+Box.prototype.toggleActivation = function() {
+  this.__el.classList.toggle("activated");
+  return (this.activated = !this.activated);
+};
+
+let box = [];
+
+for (let i = 0; i < boxItems.length; i++) {
+  box[i] = new Box(boxItems[i]);
+  box[i].init();
 }
