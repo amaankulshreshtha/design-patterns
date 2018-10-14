@@ -7,6 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        p {
+            margin-bottom: 10px;
+        }
+
         .box-container {
             display: flex;
         }
@@ -26,6 +30,20 @@
 </head>
 
 <body>
+
+    <h1 class="heading">Mixin Pattern</h1>
+
+    <p>If you have a class dedicated only for methods that you want to use, but don't want to extend the class, that is
+        where mixins come in.
+    </p>
+    <p>In Vanilla JS however, this pattern applies to Objects.</p>
+    <p>Suppose you have an Object - A and some methods in its
+        prototype. <br /> You would like to use one or some of the methods from that Object - A, without making
+        your current Object - B /Instance - B, <br />
+        a new instance of Object - A. This is where the mixin pattern comes to the rescue.
+    </p>
+    <p></p>
+
     <div id="box-container">
         <span class="1 box-item"></span>
         <span class="2 box-item"></span>
@@ -35,7 +53,10 @@
     <button id="add">Add</button>
     <button id="remove">Remove</button>
 
+    <button id="toggleOne">Toggle First Box</button>
+
     <script src="main.js"></script>
+    <script src="toggleActivaton.js"></script>
 </body>
 
 </html>

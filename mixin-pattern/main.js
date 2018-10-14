@@ -34,13 +34,6 @@ Box.prototype.toggleActivation = function() {
   return (this.activated = !this.activated);
 };
 
-let box = [];
-
-for (let i = 0; i < boxItems.length; i++) {
-  box[i] = new Box(boxItems[i]);
-  box[i].init();
-}
-
 const addBox = function() {
   const node = document.createElement("span");
   node.classList.add("box-item", "activated");
@@ -48,7 +41,8 @@ const addBox = function() {
 };
 
 function removeBox() {
-  boxContainer.removeChild(boxContainer.lastChild);
+  const lastElementChild = boxContainer.lastElementChild;
+  boxContainer.removeChild(lastElementChild);
 }
 
 addBtn.addEventListener("click", addBox);
