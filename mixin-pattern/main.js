@@ -11,16 +11,11 @@ function Box(element) {
 Box.prototype.init = function() {
   this.activateBox();
   this.__el.addEventListener("click", this.toggleActivation.bind(this));
-  addBtn.addEventListener("click", this.logger.bind(this));
 };
 
 Box.prototype.logger = function() {
   console.log(this);
 };
-
-Box.prototype.addBox = function() {
-  const node;
-}
 
 Box.prototype.activateBox = function() {
   if (this.activated) {
@@ -45,3 +40,16 @@ for (let i = 0; i < boxItems.length; i++) {
   box[i] = new Box(boxItems[i]);
   box[i].init();
 }
+
+const addBox = function() {
+  const node = document.createElement("span");
+  node.classList.add("box-item", "activated");
+  boxContainer.appendChild(node);
+};
+
+function removeBox() {
+  boxContainer.removeChild(boxContainer.lastChild);
+}
+
+addBtn.addEventListener("click", addBox);
+removeBtn.addEventListener("click", removeBox);
