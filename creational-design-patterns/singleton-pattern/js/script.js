@@ -1,4 +1,4 @@
-(function (win, $) {
+(function (win, document, $) {
 	var CircleGenerator = (function () {
 		// The only public member outside the scope of this function would be this instance variable
 		var instance;
@@ -43,13 +43,19 @@
 		};
 
 	})()
-	$(win.document).ready(function () {
+	$(document).ready(function () {
 		$('.advert').click(function (e) {
 			var cg = CircleGenerator();
 			var circle = cg.create(e.pageY - 25, e.pageX - 25);
 			cg.add(circle);
 		});
+		$(document).keypress(function (e) {
+			if (e.key === 'a') {
+				var cg = CircleGenerator();
+				var circle = cg.create(Math.floor(Math.random() * 500), Math.floor(Math.random() * 500));
+				cg.add(circle);
+			};
+		});
 
 	});
-
-})(window, jQuery);
+})(window, document, jQuery);
